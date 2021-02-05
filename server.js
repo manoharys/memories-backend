@@ -1,14 +1,16 @@
+require("./database/database");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("./database/database");
-const routes = require("./routes/routes")
+const routes = require("./routes/routes");
+const { json } = require("body-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//middlewares
-app.use(bodyParser.json({ urlEncoded: true }));
+//app middlewares
+app.use(bodyParser.json({type:json}))
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors());
 app.use('/posts', routes);
 

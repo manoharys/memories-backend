@@ -1,11 +1,19 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
-  title: String,
-  creater: String,
-  description: String,
+  title: {
+    type: String
+  },
+  creator:{
+    type: String
+  },
+  description:{
+    type: String
+  },
   tags: [String],
-  selectedFile: String,
+  selectedFile: {
+    type: String
+  },
   like: {
     default: 0,
     type: String,

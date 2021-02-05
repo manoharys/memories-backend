@@ -1,17 +1,10 @@
 const express = require("express");
 const route = express.Router();
-const PostMessages = require('../modal/schema')
+const {getPosts, createPosts, updatePost, deletePost}  = require("../controller/controller");
 
-route.get('/', async (req, res)=>{
-   try {
-       const posts = await PostMessages.find();
-       res.status(200).json(posts)
-   } catch (error) {
-       res.status(404).json({message: error});
-   }
-
-})
-
-
+route.get('/', getPosts);
+route.post('/', createPosts);
+route.put('/:id', updatePost);
+route.delete('/:id', deletePost);
 
 module.exports = route
